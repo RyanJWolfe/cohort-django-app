@@ -33,3 +33,7 @@ def describe_topic():
 
         assert sut.title == topic.title
         assert sut.created_by == topic.created_by
+
+    def is_registered_in_the_django_admin():
+        from django.contrib.admin.sites import site as admin_site
+        assert admin_site.is_registered(Topic)
