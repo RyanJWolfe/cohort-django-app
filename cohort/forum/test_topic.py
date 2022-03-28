@@ -1,5 +1,8 @@
+import datetime
+
 import factory.django
 import pytest
+from freezegun import freeze_time
 from django.contrib.auth.models import User
 
 from forum.models import Topic
@@ -26,6 +29,7 @@ def describe_topic():
     def exists():
         TopicFactory()
 
+    @freeze_time(datetime.datetime.now())
     def saves_its_fields():
         topic = TopicFactory()
 
@@ -33,6 +37,7 @@ def describe_topic():
 
         assert sut.title == topic.title
         assert sut.created_by == topic.created_by
+        assert sut.created_at == datetime.datetime.now(datetime.timezone.utc)
 
     def is_registered_in_the_django_admin():
         from django.contrib.admin.sites import site as admin_site

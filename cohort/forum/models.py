@@ -6,3 +6,4 @@ from django.contrib.auth.models import User
 class Topic(models.Model):
     title = models.CharField(max_length=20)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
