@@ -10,7 +10,7 @@ class Topic(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField()
+    comment = models.TextField()
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

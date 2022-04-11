@@ -12,7 +12,7 @@ class PostFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Post
 
-    text = factory.Faker('sentence')
+    comment = factory.Faker('sentence')
     topic = factory.SubFactory(TopicFactory)
     created_by = factory.SubFactory(UserFactory)
 
@@ -28,7 +28,7 @@ def describe_post():
 
         sut = Post.objects.get(pk=post.id)
 
-        assert sut.text == post.text
+        assert sut.comment == post.comment
         assert sut.topic == post.topic
         assert sut.created_by == post.created_by
         assert sut.created_at == datetime.datetime.now(datetime.timezone.utc)
