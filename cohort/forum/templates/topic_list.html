@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topics</title>
+</head>
+<body>
+{% block content %}
+  <h1>Topic List</h1>
+  {% if topic_list %}
+  <ul>
+    {% for topic in topic_list %}
+      <li>
+        <a href="{{ topic.get_absolute_url }}{{ topic.pk }}">{{ topic.title }}</a>,
+        <p>Created by: {{topic.created_by}}</p>
+        <p>Created at: {{ topic.created_at }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no topics in the library.</p>
+  {% endif %}
+{% endblock %}
+</body>
+</html>

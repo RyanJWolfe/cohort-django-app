@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topic Detail View</title>
+</head>
+<body>
+{% block content %}
+  <h1>Topic Detail</h1>
+  {% if topic %}
+  <ul>
+      <li>
+        <a href="/topics">{{ topic.title }}</a>,
+        <p>Created by: {{topic.created_by}}</p>
+        <p>Created at: {{ topic.created_at }}</p>
+      </li>
+  </ul>
+  {% else %}
+    <p>What is you doing??</p>
+  {% endif %}
+{% endblock %}
+</body>
+</html>
