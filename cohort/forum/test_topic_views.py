@@ -28,6 +28,10 @@ def describe_a_topic_list_view():
             with pytest.raises(Http404):
                 TopicListView.as_view()(http_request)
 
+        def it_responds_with_a_404_from_its_url(client):
+            response = client.get("/topics/")
+            assert response.status_code == 404
+
     def describe_with_topics():
         @pytest.fixture
         def topics():
@@ -44,3 +48,8 @@ def describe_a_topic_list_view():
             context = view_class.get_context_data()
 
             assert list(context['object_list']) == topics
+
+        def it_responds_with_a_200_from_its_url(client, topics):
+            response = client.get("/topics/")
+            assert response.status_code == 200
+            assert list(response.context_data['object_list']) == topics
