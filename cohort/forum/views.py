@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from forum.models import Topic
 
@@ -18,3 +18,10 @@ class TopicDetailView(DetailView):
 
     model = Topic
     template_name = 'topic_detail.html'
+
+
+class TopicCreateView(CreateView):
+
+    model = Topic
+    fields = ['title']
+    template_name = 'topic_form.html'

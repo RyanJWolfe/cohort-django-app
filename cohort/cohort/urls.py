@@ -21,5 +21,6 @@ from forum import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('topics/', views.TopicListView.as_view()),
-    path('topics/<int:pk>', views.TopicDetailView.as_view())
+    path('topics/<int:pk>', views.TopicDetailView.as_view()),
+    path('topics/create/', views.TopicCreateView.as_view())
 ]
